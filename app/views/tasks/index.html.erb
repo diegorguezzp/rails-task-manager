@@ -1,0 +1,14 @@
+<h1 style="margin: 30px;">My tasks</h1>
+<ul style="margin-left: 15px;" >
+  <%@tasks.each do |task|%>
+    <li style="list-style:none; margin-top: 10px;">
+      <div style="display: inline-flex;">
+        <input type="checkbox" <%= "checked".html_safe if task.completed %>>
+        <%= link_to task.title, task_path(task.id)%>
+      </div>
+    </li>
+  <% end %>
+</ul>
+<div class="add-button">
+  <%= link_to "Add a new task", add_path, {:style => "color:white; text-decoration: none;" }%></p>
+</div>

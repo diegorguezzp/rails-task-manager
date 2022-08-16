@@ -1,0 +1,25 @@
+<h1 style="margin: 30px;"><%= @task.title %></h1>
+<div class="details">
+  <h4><%= @task.details %></h4>
+</div>
+<div class="checkbox-details">
+  <input type="checkbox" <%= "checked".html_safe if @task.completed %>>
+  <%if @task.completed %>
+    <p>This task is completed.</p>
+  <% else %>
+    <p>This task is <strong>NOT</strong> completed yet.</p>
+  <% end %>
+</div>
+
+<div style="margin-left: 30px; margin-top: 20px;">
+  <%= link_to "Edit task", edit_path(@task)%>
+</div>
+
+<div style="margin-left: 30px;">
+  <%= link_to "Back to list", tasks_path%>
+</div>
+
+<%= link_to "Delete",
+  task_path(@task),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
